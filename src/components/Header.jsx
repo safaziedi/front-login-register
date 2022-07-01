@@ -3,36 +3,36 @@ import { Link } from "react-router-dom";
 function Header() {
   return (
     <div>
-      <div class="container">
-        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-          <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <div className="container">
+        <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+          <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li>
-              <a href="/" class="nav-link px-2 link-secondary">
+              <a href="/" className="nav-link px-2 link-secondary">
                 Home
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link px-2 link-dark">
+              <a href="#" className="nav-link px-2 link-dark">
                 To Do List
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link px-2 link-dark">
+              <a href="#" className="nav-link px-2 link-dark">
                 About
               </a>
             </li>
           </ul>
 
-          <div class="col-md-3 text-end">
+          <div className="col-md-3 text-end">
             <Link to="/login">
               {" "}
-              <button type="button" class="btn btn-outline-primary me-2">
+              <button type="button" className="btn btn-outline-primary me-2">
                 Login
               </button>
             </Link>
 
             <Link to="/register">
-              <button type="button" class="btn btn-primary">
+              <button type="button" className="btn btn-primary">
                 Sign-up
               </button>
             </Link>
