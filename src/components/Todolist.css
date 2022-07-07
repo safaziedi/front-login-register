@@ -1,0 +1,36 @@
+
+.main{
+    padding-top: 120px;
+  }
+  
+.form{
+    padding-right: 500px;
+}
+
+.vl {
+    border-left: 6px solid rgb(73, 167, 73);
+    height: 500px;
+    position: absolute;
+    left: 50%;
+    margin-left: -3px;
+    top: 140px;
+  }
+
+.tasks{
+    padding-left: 500px;
+}
+
+
+  
+  .form-controll label {
+    font-size: 20px;
+    display: block;
+  
+  }
+  
+  .form-controll input {
+    width: 20%;
+    height: 40px;
+    font-size: 17px;
+  }
+  

@@ -12,12 +12,7 @@ function Header() {
               </a>
             </li>
             <li>
-              <a href="/hello" className="nav-link px-2 link-dark">
-                To Do List
-              </a>
-            </li>
-            <li>
-              <a href="/" className="nav-link px-2 link-dark">
+              <a href="/about" className="nav-link px-2 link-dark">
                 About
               </a>
             </li>

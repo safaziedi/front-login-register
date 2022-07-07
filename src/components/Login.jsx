@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import profile from "./../images/man.png";
 import axios  from "axios";
 import { useState } from "react";
-import { Formik, Form } from 'formik';
+import { Formik} from 'formik';
 import { useNavigate } from "react-router-dom";
 
 function Login() {
@@ -26,7 +26,7 @@ function Login() {
     )
     .then((res) =>{
       console.log(res)
-      navigate("/hello", { replace: true });
+      navigate("/todolist", { replace: true });
     })
     .catch((err) => {
       alert("credentials incorecct")
