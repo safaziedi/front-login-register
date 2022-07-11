@@ -7,15 +7,15 @@ import { useState } from "react";
 import { Formik} from 'formik';
 import { useNavigate } from "react-router-dom";
 
-function Login() {
+function Login({setToken}) {
   const [email,setEmail] = useState('');
   const [password,setPassword] = useState('');
-
   let navigate = useNavigate();
 
-  const handlesubmit =(e) => {
+  const handlesubmit = (e) => {
+    
     e.preventDefault()
-    axios.post(
+    const token = axios.post(
       'http://localhost:8000/auth/signin',
       {
       
@@ -26,6 +26,10 @@ function Login() {
     )
     .then((res) =>{
       console.log(res)
+      console.log(res.data)
+      localStorage.setItem("token",res.data);
+      sessionStorage.setItem('token', JSON.stringify(res.data));
+      setToken(res.data);
       navigate("/todolist", { replace: true });
     })
     .catch((err) => {

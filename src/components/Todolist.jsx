@@ -4,36 +4,53 @@ import axios from "axios";
 import { FaTimes } from "react-icons/fa";
 import "./Todolist.css";
 
+
 function Todolist() {
+
   const [description, setText] = useState("");
   const [day, setDay] = useState("");
   const [tasks, setTasks] = useState([]);
 
+
+  useEffect(() => {
+  
+    getTasks();
+  
+  }, []);
+
   const getTasks = async () => {
-    axios.get(`http://localhost:8000/todos`).then((res) => {
+    const token =localStorage.getItem('token')
+
+    console.log("token : ",token);
+    axios.get(
+      `http://localhost:8000/todos` , { headers: {"Authorization" : `Bearer ${token}`} }
+    ).then((res) => {
       setTasks(res.data);
+    
     });
   };
-  useEffect(() => {
-    getTasks();
-  });
+
 
   const onSubmit = (e) => {
     e.preventDefault();
+    const token =localStorage.getItem('token')
 
     if (!description) {
       alert("Please add a task");
       return;
     }
-
-    axios.post("http://localhost:8000/todos", {
+    axios.post("http://localhost:8000/todos",   {
       description: description,
       day: day,
-    });
+    },
+    { headers: {"Authorization" : `Bearer ${token}`} },  
+    );
+    
 
     //il réinialise
     setText("");
     setDay("");
+    getTasks();
   };
 
 
@@ -41,8 +58,17 @@ function Todolist() {
     baseURL: `http://localhost:8000/todos`,
   });
   const onDelete = async (id) => {
-    await api.delete(`${id}`);
+    const token =localStorage.getItem('token')
+
+    await api.delete(`${id}` , 
+    { headers: {"Authorization" : `Bearer ${token}`} }
+
+    );
+    getTasks();
   };
+
+ 
+
 
   return (
     <div>
@@ -77,18 +103,14 @@ function Todolist() {
 
       <div className="tasks">
         {tasks.map((task) => (
-          <ul>
-            <li> {task.description}  </li> 
-            <li> {task.day}  </li> 
-            <FaTimes
-          style={{
-            color: "red",
-            cursor: "pointer",
-          }}
-          onClick={() => onDelete(task._id)}
-        />
-          </ul>
-         
+          
+            <li key ={task._id}> <b> {task.description}</b> {task.day} <FaTimes
+            style={{
+              color: "red",
+              cursor: "pointer",
+            }}
+            onClick={() => onDelete(task._id)}
+          /> </li> 
         ))}
       </div>
 
